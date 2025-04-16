@@ -1,0 +1,2 @@
+/system scheduler
+add interval=3d name=backup_ftp on-event=backup_ftp policy=ftp,reboot,read,write,policy,test,password,sniff,sensitive start-time=12:00:00 start-date=\$data_inicio
