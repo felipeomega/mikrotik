@@ -1,0 +1,59 @@
+É difícil definir os "10 scripts mais famosos" para MikroTik, pois a popularidade varia conforme as necessidades e especializações de cada usuário. No entanto, posso listar 10 categorias de scripts amplamente utilizados e exemplos dentro dessas categorias, que abrangem diversas funcionalidades comuns:
+
+**1. Backup e Restauração:**
+
+* **Descrição:** Scripts para automatizar backups regulares da configuração do MikroTik, tanto localmente quanto em servidores remotos (FTP, SFTP).
+* **Exemplo:** Scripts para agendar backups diários e enviar os arquivos para um servidor FTP.
+
+**2. Monitoramento e Notificações:**
+
+* **Descrição:** Scripts para monitorar o status do roteador, conexões, tráfego e outros parâmetros, enviando notificações por e-mail, SMS ou Telegram em caso de problemas.
+* **Exemplo:** Scripts para monitorar a temperatura da CPU, uso da CPU, tráfego da interface e enviar alertas se os valores ultrapassarem os limites definidos.
+
+**3. Balanceamento de Carga e Failover:**
+
+* **Descrição:** Scripts para configurar balanceamento de carga entre múltiplas conexões de internet e failover automático em caso de falha de uma conexão.
+* **Exemplo:** Scripts para verificar a disponibilidade de cada conexão e ajustar as rotas dinamicamente para garantir a continuidade do serviço.
+
+**4. Controle de Banda e QoS:**
+
+* **Descrição:** Scripts para implementar políticas de Qualidade de Serviço (QoS) para priorizar o tráfego crítico e limitar o uso de banda de aplicativos específicos.
+* **Exemplo:** Scripts para limitar a banda de downloads P2P e priorizar o tráfego VoIP.
+
+**5. Hotspot e Controle de Acesso:**
+
+* **Descrição:** Scripts para gerenciar hotspots Wi-Fi, controlar o acesso de usuários, gerar vouchers e monitorar o uso da internet.
+* **Exemplo:** Scripts para criar usuários com diferentes perfis de acesso e tempo limite.
+
+**6. VPN e Túneis:**
+
+* **Descrição:** Scripts para configurar conexões VPN (PPTP, L2TP, OpenVPN) e túneis IPsec para acesso remoto seguro.
+* **Exemplo:** Scripts para configurar um servidor OpenVPN e gerar certificados para clientes.
+
+**7. Firewall e Segurança:**
+
+* **Descrição:** Scripts para implementar regras de firewall complexas, bloquear tráfego indesejado e detectar tentativas de intrusão.
+* **Exemplo:** Scripts para bloquear ataques de força bruta SSH e detectar varreduras de portas.
+
+**8. Roteamento Dinâmico:**
+
+* **Descrição:** Scripts para configurar protocolos de roteamento dinâmico (OSPF, BGP) e ajustar rotas automaticamente em redes complexas.
+* **Exemplo:** Scripts para configurar um roteador BGP e trocar rotas com outros roteadores.
+
+**9. Automação de Tarefas:**
+
+* **Descrição:** Scripts para automatizar tarefas repetitivas, como atualização de listas de endereços, limpeza de logs e reinicialização de serviços.
+* **Exemplo:** Scripts para atualizar listas de endereços de IPs bloqueados e reiniciar o serviço de DNS a cada hora.
+
+**10. Scripts para Manutenção do Sistema:**
+
+* Descrição: Scripts para manter o sistema sempre atualizado, e de forma otimizada, sempre verificando o consumo de CPU, Memória RAM, espaço em disco, e temperatura do equipamento.
+* Exemplo: Scripts para verificar o espaço em disco e enviar alertas se o espaço disponível estiver baixo.
+
+**Recursos Adicionais:**
+
+* Fórum MikroTik: Uma vasta coleção de scripts e discussões sobre diversos tópicos.
+* Wiki MikroTik: Documentação oficial com exemplos de scripts e configurações.
+* Github de Eworm-de: Um repositório com diversos scripts para o MikroTik.
+
+Lembre-se que a segurança é fundamental ao utilizar scripts de terceiros. Sempre revise o código antes de executá-lo em seu roteador.
