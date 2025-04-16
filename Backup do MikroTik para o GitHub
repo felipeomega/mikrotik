@@ -1,0 +1,97 @@
+## Tutorial: Backup do MikroTik para o GitHub
+
+Existem duas abordagens principais para enviar os backups do seu MikroTik para o GitHub: usando a API do GitHub diretamente ou utilizando um servidor intermediário com o Git instalado. Ambas as abordagens têm seus prós e contras, e a escolha dependerá da sua infraestrutura e conhecimento técnico.
+
+### Opção 1: Usando a API do GitHub (Complexo)
+
+Esta opção é mais complexa, pois envolve o uso da API do GitHub diretamente do MikroTik. No entanto, ela elimina a necessidade de um servidor intermediário.
+
+**Pré-requisitos:**
+
+* Conhecimento básico de scripting no MikroTik.
+* Conhecimento da API do GitHub.
+* Acesso à internet no MikroTik.
+
+**Passos:**
+
+1.  **Crie um Token de Acesso Pessoal no GitHub:**
+    * Acesse as configurações do seu GitHub.
+    * Vá para "Developer settings" > "Personal access tokens".
+    * Gere um novo token com permissões para gravar em repositórios.
+    * Copie o token, pois você precisará dele no script do MikroTik.
+
+2.  **Crie um Repositório no GitHub:**
+    * Crie um repositório para armazenar seus backups.
+
+3.  **Crie o Script no MikroTik:**
+    * O script precisará realizar as seguintes tarefas:
+        * Gerar o backup do MikroTik.
+        * Formatar o arquivo de backup para o formato esperado pela API do GitHub (geralmente base64).
+        * Fazer uma requisição HTTP `PUT` para a API do GitHub para enviar o arquivo.
+        * A requisição precisará incluir o token de acesso pessoal na autenticação.
+    * Devido à complexidade, não posso fornecer um script completo aqui. No entanto, você pode encontrar exemplos e documentação da API do GitHub para ajudá-lo a criar o script.
+
+4.  **Agende o Script no MikroTik:**
+    * Use o Scheduler do MikroTik para agendar a execução do script periodicamente.
+
+**Observações:**
+
+* Esta opção é altamente complexa e exige um bom conhecimento de programação e da API do GitHub.
+* A segurança é uma preocupação importante, pois o token de acesso pessoal precisará ser armazenado no script do MikroTik.
+* Devido a essas questões, a opção de utilizar um servidor intermediário é mais segura e recomendada.
+
+### Opção 2: Usando um Servidor Intermediário (Recomendado)
+
+Esta opção utiliza um servidor intermediário (um PC, servidor ou Raspberry Pi) com o Git instalado para enviar os backups para o GitHub.
+
+**Pré-requisitos:**
+
+* Um servidor intermediário com o Git instalado.
+* Acesso SSH do MikroTik ao servidor intermediário.
+* Conhecimento básico de Git e scripting em Bash ou Python.
+
+**Passos:**
+
+1.  **Configure o Git no Servidor Intermediário:**
+    * Instale o Git no servidor.
+    * Clone o repositório do GitHub para o servidor.
+    * Configure as credenciais do Git no servidor.
+    * Configure chaves SSH para o servidor e o github, para evitar guardar usuario e senha no servidor.
+
+2.  **Crie um Script no Servidor Intermediário:**
+    * O script precisará realizar as seguintes tarefas:
+        * Monitorar a pasta onde os arquivos de backup do MikroTik são salvos.
+        * Quando um novo arquivo é detectado, adicioná-lo ao repositório Git.
+        * Fazer um commit com uma mensagem descritiva.
+        * Enviar as alterações para o GitHub (`git push`).
+
+3.  **Configure o Acesso SSH no MikroTik:**
+    * Gere chaves SSH no MikroTik.
+    * Copie a chave pública para o servidor intermediário.
+    * Teste a conexão SSH do MikroTik para o servidor.
+
+4.  **Crie o Script no MikroTik:**
+    * O script precisará realizar as seguintes tarefas:
+        * Gerar o backup do MikroTik.
+        * Enviar o arquivo de backup para o servidor intermediário via SCP ou SFTP.
+    * Exemplo de Script no MikroTik:
+
+```mikrotik
+/system script
+add name=backup_github source=":tool fetch address=\"SERVIDOR_INTERMEDIARIO\" src-path=\"NOME_DO_BACKUP.rsc\" user=\"USUARIO_DO_SERVIDOR\" password=\"SENHA_DO_SERVIDOR\" dst-path=\"/caminho/do/backup/no/servidor/NOME_DO_BACKUP.rsc\""
+/system scheduler
+add name=backup_github interval=1d on-event=backup_github start-time=00:00:00
+```
+
+5.  **Agende os Scripts:**
+    * Agende o script do MikroTik para ser executado periodicamente.
+    * Configure o script do servidor intermediário para ser executado continuamente ou agendado para verificar novos arquivos.
+
+**Observações:**
+
+* Esta opção é mais segura e recomendada, pois as credenciais do GitHub são armazenadas apenas no servidor intermediário.
+* Requer configuração e manutenção adicionais, mas oferece maior flexibilidade e controle.
+* Lembre-se de substituir os valores de exemplo pelos seus dados reais.
+* A segurança é fundamental, portanto, proteja o servidor intermediário e as credenciais de acesso.
+
+Lembre-se que essa é uma explicação geral e a implementação exata dependerá da sua infraestrutura e necessidades específicas.
